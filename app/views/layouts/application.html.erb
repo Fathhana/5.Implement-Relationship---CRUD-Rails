@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang='en'>
+<head>
+  <title>Blog</title>
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= csrf_meta_tags %>
+</head>
+<style>
+	div.container {
+	    margin-top: 60px;
+	    margin-bottom: 80px;
+	}
+</style>
+<body>
+	<%= render 'shared/navigation_bar' %>
+	<div class='container'>
+		<%= yield %>
+	</div>
+
+ 	<div class="navbar navbar-default navbar-fixed-bottom">
+      <p class="navbar-text pull-left">
+      	© 2017 - Site Built By Fathhana.  
+      </p>  
+    </div>
+
+</body>
+</html>

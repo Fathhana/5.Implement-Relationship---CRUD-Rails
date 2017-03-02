@@ -1,0 +1,46 @@
+<div class="panel panel-default" style="height:150px">
+  <div class="panel-body pull-left">
+	<h2>Export Article</h2>
+	<p>
+	  Download:
+	  <%= link_to "CSV", articles_path(format: "csv") %> |
+	  <%= link_to "Excel", articles_path(format: "xls") %>
+	</p>
+  </div>
+  <div class="panel-body pull-right">
+	<h2>Import Article</h2>
+	<%= form_tag import_articles_path, multipart: true do %>
+	  <%= file_field_tag :file, :class=>"pull-left" %>
+	  <%= submit_tag "Import", :class=>"pull-left" %>
+	<% end %>
+  </div>
+</div>
+
+<%= link_to "New Article", "articles/new", :class=> "btn btn-primary pull-right" %>
+<p id="notice"><%= notice %></p>
+<h3>Articles Lists</h3>
+<% @articles.each do |article| %>
+	<div class="panel panel-default">
+	    <div class="panel-heading"><%= article.title %></div>
+	    <div class="panel-body">
+	    	<p>
+				<%= article.content.truncate(50) %>
+				<%= link_to 'read more', article_path(article.id) %>
+			</p>
+			<hr>
+			<span>status : <%= article.status %></span>
+			<span class="pull-right">
+				<%= link_to 'Show', article_path(article.id), :class=>"btn btn-success" %>
+			<span>
+			<span>
+				<%= link_to 'edit', edit_article_path(article.id), :class=>"btn btn-warning" %>
+			<span>
+			<span>
+				<%= link_to 'delete', article_path(article.id), method: "DELETE", data: {confirm: 'Delete this data ? '}, :class=>"btn btn-danger" %>
+			<span>
+		</div>
+	</div>
+<% end %>
+
+ <%= paginate @articles %>
+ 

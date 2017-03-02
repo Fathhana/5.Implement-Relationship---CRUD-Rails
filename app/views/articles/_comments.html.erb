@@ -1,0 +1,12 @@
+<% @comments.each do |comment| %>
+<div class="panel panel-default">
+  <div class="panel-body">
+	<p>
+		<b><%= comment.user.try(:username) %></b> &nbsp;
+		<small style="color:gray"><%= comment.created_at.strftime("%A, %d %B") %></small>
+		<br />
+		<%= comment.content %> 
+	</p>
+  </div>
+</div>
+<% end %>
